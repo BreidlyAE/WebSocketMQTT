@@ -5,6 +5,8 @@ const path = require("path");
 const pug = require("pug");
 const pino = require("pino");
 const pinoHttp = require("pino-http");
+
+//======== CONEXION MQTT NODE RED  =================================
 const mqtt = require("mqtt");
 const { Server } = require("socket.io");
 const client = mqtt.connect("mqtt://soldier.cloudmqtt.com", {
@@ -12,6 +14,7 @@ const client = mqtt.connect("mqtt://soldier.cloudmqtt.com", {
   password: "121383loco",
   port: 15258,
 });
+//==================================================================
 
 client.on("connect", () => {
   console.log("MQTT conectado! XD");
@@ -114,6 +117,7 @@ module.exports = function main(options, cb) {
     );
     ready(err, app, server);
   });
+  //==========================================================================
   const io = new Server(server, {
     cors: {
       origin: ["http://localhost:3000"],
