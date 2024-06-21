@@ -128,6 +128,9 @@ module.exports = function main(options, cb) {
     socket.on("from_react", (data) => {
       client.publish("from_react", data);
     });
+    socket.on("boton_presionadoSocketIO", (data) => {
+      client.publish("boton_presionadoMQTT", data.toString());
+    });
   });
 
   client.on("message", (topic, data) => {
